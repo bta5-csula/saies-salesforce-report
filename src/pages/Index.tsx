@@ -1,16 +1,43 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import HeroSection from "@/components/report/HeroSection";
+import NewsTicker from "@/components/report/NewsTicker";
+import FinancialMetrics from "@/components/report/FinancialMetrics";
+import AgentforceSection from "@/components/report/AgentforceSection";
+import ZeroCopyDiagram from "@/components/report/ZeroCopyDiagram";
+import CompetitorEdge from "@/components/report/CompetitorEdge";
+import IndustryVerticals from "@/components/report/IndustryVerticals";
+import TrustLayer from "@/components/report/TrustLayer";
+import ROICalculator from "@/components/report/ROICalculator";
+import NewsFeed from "@/components/report/NewsFeed";
+import TDXCountdown from "@/components/report/TDXCountdown";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <NewsTicker />
+      <TDXCountdown />
+      <FinancialMetrics />
+      <AgentforceSection />
+      <ZeroCopyDiagram />
+      <CompetitorEdge />
+      <IndustryVerticals />
+      <TrustLayer />
+      <ROICalculator />
+      <NewsFeed />
+
+      {/* Footer */}
+      <footer className="py-12 border-t border-border/30">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm text-muted-foreground">
+            Salesforce 2026 Agentic Era Report · Data sourced from public filings and official announcements
+          </p>
+          <p className="text-xs text-muted-foreground/60 mt-2">
+            Built with React, Framer Motion, and Recharts
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
