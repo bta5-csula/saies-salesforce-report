@@ -25,10 +25,7 @@ Data verified against the FY2026 Earnings report:
 * **$800M** Agentforce ARR.
 * **2.4 Billion** Agentic Work Units delivered.
 
-## Deployed Webpage through Vercel
-Link: https://saies-salesforce-report.vercel.app/
-
-## Setup and Installation for Local Environment
+## Setup and Installation
 1. **Clone the repository:**
    `git clone https://github.com/bta5-csula/saies-salesforce-report.git`
 2. **Install dependencies:**
@@ -43,5 +40,5 @@ Link: https://saies-salesforce-report.vercel.app/
 This project highlights Salesforce’s alignment with the EU AI Act and their 17th consecutive year as one of the World’s Most Ethical Companies, focusing on responsible and transparent AI deployment.
 
 ---
-**Developed by:** Brian Ta  
+**Developed by:** Brian Ta
 **University:** California State University, Los Angeles
