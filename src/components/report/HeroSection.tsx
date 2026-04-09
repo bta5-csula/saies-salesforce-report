@@ -1,104 +1,121 @@
 import { motion } from "framer-motion";
-import { Bot, Zap, Globe } from "lucide-react";
+import { BlurText } from "@/components/ui/blur-text";
+import { ArrowUpRight, Play } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-sf-purple/5 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-sf-cyan/3 blur-3xl" />
-      </div>
+    <div className="relative overflow-visible h-[1000px] w-full flex flex-col items-center justify-start bg-black pb-32">
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute left-0 top-[10%] w-full h-[90%] object-cover z-0 opacity-90 mix-blend-screen"
+        poster="/images/hero_bg.jpeg"
+      >
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--sf-blue) / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--sf-blue) / 0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Dark overlay & fade to background at bottom to match the Salesforce theme below */}
+      <div className="absolute inset-0 bg-black/60 z-0 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-[400px] bg-gradient-to-b from-transparent to-background z-0 pointer-events-none" />
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 text-sm font-medium text-primary">
-            <span className="w-2 h-2 rounded-full bg-sf-green animate-pulse" />
-            2026 Strategic Intelligence Report
-          </div>
-        </motion.div>
+      {/* Fixed Navbar (Liquid Glass) */}
+      <nav className="fixed top-6 left-0 right-0 z-50 px-8 lg:px-16 flex justify-between items-center pointer-events-auto">
+        {/* Placeholder Logo space */}
+        <div className="h-12 w-12 rounded-full liquid-glass flex items-center justify-center font-heading italic text-xl text-white">S</div>
+        
+        {/* Center Nav */}
+        <div className="hidden md:flex liquid-glass rounded-full px-1.5 py-1 items-center space-x-1 shadow-lg">
+          <a href="#report" onClick={(e) => { e.preventDefault(); document.getElementById('report')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors font-body">Report</a>
+          <a href="#agentforce" onClick={(e) => { e.preventDefault(); document.getElementById('agentforce')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors font-body">Agentforce</a>
+          <a href="#financials" onClick={(e) => { e.preventDefault(); document.getElementById('financials')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-4 py-2 text-sm font-medium text-white/90 hover:text-white transition-colors font-body">Financials</a>
+          <button 
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            className="bg-white text-black rounded-full px-4 py-2 text-sm ml-2 flex items-center gap-1 font-body font-medium hover:bg-white/90 transition-colors"
+          >
+            Get the Data <ArrowUpRight className="w-4 h-4 text-black" />
+          </button>
+        </div>
+      </nav>
 
-        <motion.h1
-          className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 leading-[0.9]"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-        >
-          <span className="text-foreground">Salesforce</span>
-          <br />
-          <span className="glow-text" style={{
-            background: 'linear-gradient(135deg, hsl(197 100% 44%), hsl(185 80% 50%), hsl(260 70% 60%))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}>
-            Agentic Era
+      {/* Hero Content */}
+      <div className="relative z-10 flex flex-col items-center text-center px-4 w-full pt-40 md:pt-48">
+        {/* Sub-badge */}
+        <div className="liquid-glass rounded-full p-1 pr-4 inline-flex items-center gap-3 mb-8 shadow-lg">
+          <span className="bg-white text-black rounded-full px-3 py-1 text-xs font-semibold font-body flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            2026 Edition
           </span>
-        </motion.h1>
+          <span className="text-sm text-white/90 font-body">Strategic Intelligence Report</span>
+        </div>
 
+        {/* Heading */}
+        <BlurText 
+          text="Salesforce <br/> Agentic Era"
+          className="text-7xl md:text-8xl lg:text-[7.5rem] font-heading italic text-white leading-[0.8] max-w-4xl tracking-[-2px] text-center drop-shadow-2xl"
+          delayDefault={0.1}
+          delayByWord={0.15}
+        />
+
+        {/* Subtext */}
         <motion.p
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          initial={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+          animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-8 text-lg md:text-xl text-white/90 font-body font-light leading-relaxed max-w-2xl text-center drop-shadow-md"
         >
           How autonomous AI agents, Zero-Copy architecture, and the world's largest CRM 
           are rewriting the rules of enterprise software.
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
+           initial={{ filter: "blur(10px)", opacity: 0, y: 20 }}
+           animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+           transition={{ duration: 0.6, delay: 1.1 }}
+           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          {[
-            { icon: Bot, label: "2.4B Agentic Work Units", sublabel: "Delivered" },
-            { icon: Zap, label: "112T Records Ingested", sublabel: "Data Cloud" },
-            { icon: Globe, label: "29,000 Deals in Q4", sublabel: "Enterprise Adoption" },
-          ].map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              className="glass-card-hover px-6 py-4 flex items-center gap-3"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-            >
-              <stat.icon className="w-5 h-5 text-primary" />
-              <div className="text-left">
-                <p className="text-sm font-semibold text-foreground">{stat.label}</p>
-                <p className="text-xs text-muted-foreground">{stat.sublabel}</p>
-              </div>
-            </motion.div>
-          ))}
+          <button 
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            className="liquid-glass-strong rounded-full px-8 py-4 font-body font-medium text-white flex items-center gap-2 hover:bg-white/10 transition-colors shadow-2xl"
+          >
+            Explore Report <ArrowUpRight className="w-4 h-4 text-white" />
+          </button>
+          <button 
+            onClick={() => window.open('https://www.youtube.com/watch?v=5s_t8Jw3vNc', '_blank')}
+            className="flex items-center gap-2 text-white/90 font-body font-medium hover:text-white transition-colors cursor-pointer px-4 drop-shadow-md"
+          >
+            <Play className="w-4 h-4 fill-white text-white" /> Watch Keynote
+          </button>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+      {/* Original Stats */}
+      <motion.div 
+         initial={{ opacity: 0, y: 20 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ delay: 1.5, duration: 1 }}
+         className="relative z-10 mt-auto pt-20 pb-8 flex flex-col items-center justify-center w-full"
       >
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-          <div className="w-1 h-2 rounded-full bg-primary" />
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 w-full max-w-5xl px-4">
+          {[
+            { label: "2.4B Work Units", sub: "Delivered" },
+            { label: "112T Records", sub: "Data Cloud" },
+            { label: "29,000 Deals", sub: "Q4 Adoption" },
+          ].map((stat, i) => (
+            <div key={i} className="liquid-glass rounded-2xl px-6 py-4 flex flex-col items-center justify-center min-w-[200px]">
+              <span className="text-3xl md:text-4xl font-heading italic text-white drop-shadow-md">{stat.label}</span>
+              <span className="text-xs text-white/60 font-body uppercase tracking-wider mt-1">{stat.sub}</span>
+            </div>
+          ))}
         </div>
       </motion.div>
-    </section>
+    </div>
   );
 };
 

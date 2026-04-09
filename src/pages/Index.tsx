@@ -15,13 +15,21 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <HeroSection />
       <NewsTicker />
-      <TDXCountdown />
-      <FinancialMetrics />
-      <AgentforceSection />
+      <div id="report">
+        <TDXCountdown />
+      </div>
+      <div id="financials">
+        <FinancialMetrics />
+      </div>
+      <div id="agentforce">
+        <AgentforceSection />
+      </div>
       <ZeroCopyDiagram />
       <CompetitorEdge />
       <IndustryVerticals />
-      <TrustLayer />
+      <div id="compliance">
+        <TrustLayer />
+      </div>
       <ROICalculator />
       <NewsFeed />
 

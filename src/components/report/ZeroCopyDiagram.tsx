@@ -25,9 +25,12 @@ const ZeroCopyDiagram = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          className="glass-card p-8 md:p-12 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 30 }}
+        <div className="flex flex-col gap-8 max-w-5xl mx-auto items-center">
+          
+          {/* Main Diagram Card */}
+          <motion.div
+            className="glass-card p-8 lg:p-10 w-full"
+            initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
@@ -96,19 +99,50 @@ const ZeroCopyDiagram = () => {
             </motion.div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            {[
-              { label: "Cost Savings", desc: "No ETL pipelines needed" },
-              { label: "Security Win", desc: "Data never leaves source" },
-              { label: "Real-Time", desc: "Always-current insights" },
-            ].map((b) => (
-              <div key={b.label}>
-                <p className="text-sm font-semibold text-primary">{b.label}</p>
-                <p className="text-xs text-muted-foreground">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+            <div className="mt-8 pt-6 border-t border-border/30 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              {[
+                { label: "Cost Savings", desc: "No ETL pipelines needed" },
+                { label: "Security Win", desc: "Data never leaves source" },
+                { label: "Real-Time", desc: "Always-current insights" },
+              ].map((b) => (
+                <div key={b.label}>
+                  <p className="text-sm font-semibold text-primary">{b.label}</p>
+                  <p className="text-xs text-muted-foreground">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Spring '26 Innovations List */}
+          <motion.div
+            className="glass-card p-8 lg:p-10 w-full flex flex-col justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-widest mb-8 text-primary border-b border-border/40 pb-4 text-center">
+              Spring '26 Release Highlights
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-10">
+              {[
+                { em: "⚡", title: "Agentforce Builder",        body: "Low-code/no-code deployment of fully autonomous agents. 350+ ISV partner templates. GA in Spring '26." },
+                { em: "🧠", title: "Data Cloud as Agent Brain",  body: "112T records ingested (+114% Y/Y), 53T via Zero Copy (+310% Y/Y). Agents reason over real-time unified customer graphs — no data movement." },
+                { em: "🔄", title: "Zero Copy Expansion",      body: "Salesforce reads data in Snowflake, AWS, and BigQuery in-place. Zero egress cost, zero security exposure to LLM providers." },
+                { em: "🤝", title: "Agentforce + Slack", body: "2.4B Agentic Work Units delivered cumulative across Agentforce and Slack. 19 trillion tokens processed to date, up 5× Y/Y." },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <span className="text-2xl flex-shrink-0 mt-0.5">{item.em}</span>
+                  <div>
+                    <div className="text-base font-semibold mb-2 text-foreground">{item.title}</div>
+                    <div className="text-sm leading-relaxed text-muted-foreground">{item.body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

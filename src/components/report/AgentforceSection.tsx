@@ -24,6 +24,8 @@ const features = [
   },
 ];
 
+import { Meteors } from "@/components/ui/meteors";
+
 const AgentforceSection = () => {
   return (
     <section className="py-20">
@@ -38,19 +40,27 @@ const AgentforceSection = () => {
           <h2 className="section-title">The Agentforce Era</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        {/* ── Aceternity Bento Grid Layout ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {features.map((f, i) => (
             <motion.div
               key={f.title}
-              className="glass-card-hover p-6 gradient-border"
+              className={`relative overflow-hidden glass-card-hover p-8 gradient-border flex flex-col justify-end min-h-[220px] ${
+                i === 0 ? "md:col-span-2" : i === 3 ? "md:col-span-2" : "md:col-span-1"
+              }`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
             >
-              <f.icon className="w-6 h-6 text-primary mb-3" />
-              <h3 className="text-lg font-bold text-foreground mb-2">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+              {/* Aceternity Meteors Effect in large cards */}
+              {(i === 0 || i === 3) && <Meteors number={20} className="opacity-60" />}
+
+              <div className="relative z-10">
+                <f.icon className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-xl font-bold text-foreground mb-2">{f.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">{f.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
